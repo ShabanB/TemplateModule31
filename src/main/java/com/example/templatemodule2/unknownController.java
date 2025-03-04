@@ -106,28 +106,52 @@ public class unknownController  implements Initializable {
     @FXML
     protected void onFeatureButtonOne()
     {
-        userTypeLabel.setText("hello");
+        labelOne.setText("MATH001-Mathematics");
+        labelTwo.setText("ENG101-English");
+        labelThree.setText("ENGG1420-Programming");
+        labelFour.setText("CS201-Computer Science");
+        labelFive.setText("CHEM200-Chemistry");
+        labelSix.setText("BIO300-Biology");
+        labelSeven.setText("ENGG402-Engineering");
+        labelEight.setText("HIST101-History");
+        labelNine.setText("MUSIC102-Music");
+        labelTen.setText("PSYCHO100-Psychology");
+        labelEleven.setText("PHYS1010-Physics");
+        labelTweleve.setText("ENGG1210-Mechanics");
+        labelThirteen.setText("MATH1210-Calculus Two");
+        labelFourteen.setText("ENGG1500-Engineering Analysis");
+
+
+
+    }
+
+    //code to reset subject list when infolist has nothing in it
+    private void resetSubjectList() {
+        for (Label label : infoList) {
+            if (label != null) {
+                label.setVisible(true);  // Show all subjects again
+            }
+        }
     }
 
     @FXML
     protected void onSearchButton()
     {
-        String name ="";
-        name = searchTextField.getText();
-        String candidates[] = new String[14];
-        int canHolder = 0;
-        for (int i = 0; i < main.facuilties.length; i++)
-        {
-            if (name.equals(main.facuilties[i].name))
-            {
-                candidates[canHolder] = name;
-                canHolder++;
+        //prevents case sensitivity and extra spaces issues
+        String searchText = searchTextField.getText().trim().toLowerCase();
+        //search bar empty show all courses
+        if (searchText.isEmpty()) {
+            resetSubjectList();
+            return;
+        }
+        //for loop for looping each label inside infolist
+            for (Label label : infoList) {
+                if (label != null && label.getText().toLowerCase().contains(searchText)) {
+                    label.setVisible(true);  // Show matching subjects
+                } else {
+                    label.setVisible(false); // Hide non-matching subjects
+                }
             }
-        }
-        for (int i = 0; i < 14; i++)
-        {
-            infoList[i].setText(candidates[i]);
-        }
 
     }
 

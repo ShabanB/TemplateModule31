@@ -11,7 +11,6 @@ import java.io.IOException;
 
 public class main extends Application {
     static public char userType = 'u';
-    public static facuilty[] facuilties = new facuilty[100];
     public static void switchScene (Stage stage,  String s) throws IOException {
         /*FXMLLoader subManagment = new FXMLLoader(runApplication.class.getResource("subModule.fxml"));
         FXMLLoader courManagment = new FXMLLoader(runApplication.class.getResource("courModule.fxml"));
@@ -76,12 +75,6 @@ public class main extends Application {
         stage.setTitle("moduleName");
         stage.setScene(scene);
         stage.show();
-        for (int i = 0; i < 100; i++)
-        {
-            facuilty f = new facuilty();
-            facuilties[i] = f;
-            facuilties[i].name = i + "";
-        }
 
     }
 
